@@ -27,7 +27,7 @@ package body Hash is
    Keys   : AdaMT19937.Access_Vector := new AdaMT19937.Vector (0 .. 3);
 
 
-   Nb_Bits : constant Natural :=20;
+   Nb_Bits : constant Natural :=25;
    Table : array(0..2**Nb_Bits-1) of Hash_Type
      := (others=>(
 		  I=>0,
