@@ -11,6 +11,6 @@ clean:
 	gnatclean -q main;gnatclean -q makebook;\rm -f *~ log* *.pgn *.o
 
 allclean:
-	gnatclean -q main;gnatclean -q makebook;\rm -f *~ log* *.pgn *.bin
+	gnatclean -q main;gnatclean -q makebook;\rm -f *~ *.log *.pgn *.bin
 
 
