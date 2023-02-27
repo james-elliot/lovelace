@@ -3,5 +3,7 @@
 ICS
 *.o
 *.ali
+*.log
+*.pgn
 makebook
 main
