@@ -36,7 +36,9 @@ Use Ada.Exceptions;
 with Gnat.Traceback;
 use Gnat.Traceback;
 with Util;
-use Util;
+use Util;	
+use type Ada.Real_Time.Time;
+use type Ada.Real_Time.Time_Span;
 
 procedure Main is
    
@@ -98,7 +100,7 @@ procedure Main is
    Old_From:Integer :=-1;
    Old_To : Integer:=-1;
    Old_Xotime : Integer :=0;
-   
+   Period    : Ada.Real_Time.Time_Span;
 begin
 
 --   time 20000
@@ -209,8 +211,8 @@ begin
       end if;
       if Col = My_Col and not Xboard_Force Then
          begin
-            Full_Start_Time_Real := Ada.Real_Time.Clock;
             Full_Start_Time := Clock;
+            Full_Start_Time_Real := Ada.Real_Time.Clock;
             Move_From := -1;Move_To := -1;Old_From:=-1;Old_To:=-1;
 	    Prof := 10;Alpha:=-32767;Beta:=32767;
             Have_Time := Float(Xtime)/100.0;
@@ -250,9 +252,12 @@ begin
                              &" mat="&Integer'Image(Tmp));
                end if;
                if Max_Delay<Min_Delay then Max_Delay := Min_Delay; end if;
-               Put_Line(File_Log,"Max_delay="&Float'Image(Max_Delay));
+               Put_Line(File_Log,"Max_delay="&Float'Image(Max_Delay)); 
+	       Period := Ada.Real_Time.Milliseconds(Integer(1000.0*Max_Delay));	
                select
-                  delay until (Start_Time+Duration(Max_Delay));
+--                  delay until (Start_Time+Duration(Max_Delay));	
+--                  delay Duration(Max_Delay);		  		
+		  delay until (Full_Start_Time_Real+Period);	
                   Restore_State(St);
                   for I in 0..63 loop Chess_Board(I) := Lcb(I); end loop;
                   Dur := Float(Clock-Start_Time);
