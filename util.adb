@@ -4,6 +4,17 @@ use Text_Io;
 
 package body Util is
 
+   function Convert_To_Pos(Tmp:Integer) return String is		
+   	    T:String(1..2);   	     
+	    X,Y: Integer;
+   begin    
+   	    Y := Tmp/8;	
+	    X := Tmp mod 8;	
+	    T(1) := Character'Val(X+65);	
+	    T(2) := Character'Val(Y+49);	
+	    return(T);	
+   end Convert_To_Pos; 
+
 
 function Open_New_Log(Name : String) return boolean is
    begin

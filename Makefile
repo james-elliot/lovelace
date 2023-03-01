@@ -1,8 +1,8 @@
 std:
-	gnatmake main;gnatmake makebook
+	gnatmake -mcmodel=large main;gnatmake makebook
 
 fast:
-	gnatmake -O2 -gnatN -fomit-frame-pointer -gnatp main;gnatmake -O2 -gnatN -fomit-frame-pointer -gnatp makebook
+	gnatmake -mcmodel=large -O2 -gnatN -fomit-frame-pointer -gnatp main;gnatmake -O2 -gnatN -fomit-frame-pointer -gnatp makebook
 
 debug:
 	gnatmake -g -gnata main -bargs -E -largs -lgnat ;gnatmake -g -gnata makebook

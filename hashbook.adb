@@ -197,7 +197,7 @@ package body Hashbook is
             Tot := Integer(Hash_Tab(N_Ind).Draw)+Integer(Hash_Tab(N_Ind).Won)
 	      +Integer(Hash_Tab(N_Ind).Lost);
             Put_Line(File_Log,
-		     "From:"&Integer'Image(My_From)&" To:"&Integer'Image(My_To)&
+		     "From:"&Convert_To_Pos(My_From)&" To:"&Convert_To_Pos(My_To)&
 		       " won:"&Unsigned_16'Image(Hash_Tab(N_Ind).won)&
 		       " lost:"&Unsigned_16'Image(Hash_Tab(N_Ind).lost)&
 		       " draw:"&Unsigned_16'Image(Hash_Tab(N_Ind).draw)&
@@ -206,7 +206,7 @@ package body Hashbook is
          else
             Res := 0.00005;
          end if;
-	 Put_Line(File_Log,"From:"&Integer'Image(My_From)&" To:"&Integer'Image(My_To)&" res:"&Float'Image(res)&" Tot:"&Integer'Image(Tot));
+	 Put_Line(File_Log,"From:"&Convert_To_Pos(My_From)&" To:"&Convert_To_Pos(My_To)&" res:"&Float'Image(res)&" Tot:"&Integer'Image(Tot));
 	 if Res >0.4 then
 	    if Tot > T_Max then T_Max := Tot; end if;
 	    Ind_Max := Ind_Max+1;
@@ -223,7 +223,7 @@ package body Hashbook is
          if Res>Mv then Mv := Res; Best := I; end if;
 	 My_From := Integer(Hash_Tab(T_Ind).Moves(Moves(I)).From);
 	 My_To := Integer(Hash_Tab(T_Ind).Moves(Moves(I)).To);
-	 Put_Line(File_Log,"From:"&Integer'Image(My_From)&" To:"&Integer'Image(My_To)&" pond:"&Float'Image(Pond(I))&" Tot:"&Integer'Image(All_Tot(I))&" Res:"&Float'Image(Res));
+	 Put_Line(File_Log,"From:"&Convert_To_Pos(My_From)&" To:"&Convert_To_Pos(My_To)&" pond:"&Float'Image(Pond(I))&" Tot:"&Integer'Image(All_Tot(I))&" Res:"&Float'Image(Res));
 	 Pond(I):=Res;
 	 Sum := Sum+Res;
       end loop;
@@ -249,7 +249,7 @@ package body Hashbook is
 
       From := Integer(Hash_Tab(T_Ind).Moves(Moves(T2)).From);
       To := Integer(Hash_Tab(T_Ind).Moves(Moves(T2)).To);
-      Put_Line(File_Log,"Move chosen:"&Integer'Image(From)&Integer'Image(To));
+      Put_Line(File_Log,"Move chosen:"&Convert_To_Pos(From)&Convert_To_Pos(To));
       Flush(File_Log);
    end Get_Book;
 

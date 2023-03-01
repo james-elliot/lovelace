@@ -724,7 +724,7 @@ package body Move is
 	    if Res<-32700 and Res/=-32767 then Res:=Res+1; end if;
 	    
 	    if Int_Prof=0 then
-	       Put_Line(File_Log,"First From:"&Integer'Image(Best_From)&" To:"&Integer'Image(Best_To)&
+	       Put_Line(File_Log,"First From:"&Convert_To_Pos(Best_From)&" To:"&Convert_To_Pos(Best_To)&
 			  " Alpha:"&Integer'Image(Alp)&" Beta:"&Integer'Image(Bet)&
 			  " Res:"&Integer'Image(Res)&" Nb_pos:"&Integer'Image(Nb_Pos));
 	       Flush(File_Log);
@@ -843,7 +843,7 @@ package body Move is
 	 if Res<-32700 and Res/=-32767 then Res:=Res+1; end if;
 
          if Int_Prof=0 then
-            Put_Line(File_Log,"Prof:"&Integer'Image(Prof)&" From:"&Integer'Image(All_Moves(I).from)&" To:"&Integer'Image(All_Moves(I).To)&" Alpha:"&Integer'Image(Alp)&" Beta"&Integer'Image(Bet)&" Res:"&Integer'Image(Res));
+            Put_Line(File_Log,"Prof:"&Integer'Image(Prof)&" From:"&Convert_To_Pos(All_Moves(I).from)&" To:"&Convert_To_Pos(All_Moves(I).To)&" Alpha:"&Integer'Image(Alp)&" Beta"&Integer'Image(Bet)&" Res:"&Integer'Image(Res));
             Flush(File_Log);
          end if;
 
@@ -912,7 +912,7 @@ package body Move is
         return G;
    exception
       when Error : others =>
-	 Put_Line(File_Log,"From:"&Integer'Image(Str_From)&" To:"&Integer'Image(Str_To));
+	 Put_Line(File_Log,"From:"&Convert_To_Pos(Str_From)&" To:"&Convert_To_Pos(Str_To));
          Put_Line(File_Log,"Prof:"&Integer'Image(Prof)&" Int_prof:"&Integer'Image(Int_Prof)&" Max prof:"&Integer'Image(Max_Prof)&" Qs:"&Boolean'Image(Qs));
 	 Print_Chessboard(File_Log);
          Put_Line(File_Log,"Exception in move:"&Ada.Exceptions.Exception_Name(Error)&". Exiting.");

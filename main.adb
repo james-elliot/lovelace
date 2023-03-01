@@ -39,9 +39,9 @@ with Util;
 use Util;	
 use type Ada.Real_Time.Time;
 use type Ada.Real_Time.Time_Span;
-
+    
 procedure Main is
-   
+		
    function Convert_Clock(Tmp:Integer) return String is
       function Trans (I:Integer) return String is
 	 T:String(1..2);
@@ -292,7 +292,7 @@ begin
                   End_Time := Clock;
                   Dur := Float(End_Time-Start_Time);
                   Have_Time := Have_Time-Dur;
-                  Put_Line(File_log,"Out of loop. Prof:"&Integer'Image(Prof)&" From:"&Integer'Image(Move_From)&" To:"&Integer'Image(Move_To)&" Val:"&Integer'Image(Res)&" Time:"&Float'Image(Dur)&" Have_time:"&Float'Image(Have_Time));
+                  Put_Line(File_log,"Out of loop. Prof:"&Integer'Image(Prof)&" From:"&Convert_To_Pos(Move_From)&" To:"&Convert_To_Pos(Move_To)&" Val:"&Integer'Image(Res)&" Time:"&Float'Image(Dur)&" Have_time:"&Float'Image(Have_Time));
 		  Old_From := Move_From; Old_To := Move_To;
                   Flush(File_Log);
                   if (Dur > Max_Delay/3.0) and (Float(End_Time-Full_Start_Time)>Min_Delay) then
@@ -325,8 +325,8 @@ begin
          end;
       end if;
       Movenum := Movenum+1;
-      Put_Line(File_log,"Out of main loop. From:"&Integer'Image(Move_From)&
-		 " To:"&Integer'Image(Move_To)&" Res:"&Integer'Image(Res));
+      Put_Line(File_log,"Out of main loop. From:"&Convert_To_Pos(Move_From)&
+		 " To:"&Convert_To_Pos(Move_To)&" Res:"&Integer'Image(Res));
       Flush(File_Log);
       if Move_From=-1 and Old_From /=-1 then 
 	 Move_From := Old_From;Move_To := Old_To;
