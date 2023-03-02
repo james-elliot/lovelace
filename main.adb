@@ -260,9 +260,12 @@ begin
 		  delay until (Full_Start_Time_Real+Period);	
                   Restore_State(St);
                   for I in 0..63 loop Chess_Board(I) := Lcb(I); end loop;
-                  Dur := Float(Clock-Start_Time);
-                  Put_Line(File_Log,"Raising End_thinking in Interrupted.Dur:"&Float'Image(Dur)
-                          &" Max_delay:"&Float'Image(Max_Delay));
+                  Dur := Float(Clock-Full_Start_Time);	
+                  Real_Dur := Ada.Real_Time."-"(Ada.Real_Time.Clock,Full_Start_Time_Real);
+                  Put_Line(File_Log,"Raising End_thinking in Interrupted. Dur:"&Float'Image(Dur)
+		          & " Real_Dur:" & Duration'Image(Ada.Real_Time.To_Duration(Real_Dur))	
+			  & " Period:" & Ada.Real_Time.Time_Span'Image(Period)
+                          & " Max_delay:"&Float'Image(Max_Delay));
                   raise End_Thinking;
                then abort
                   Save_State(St);
