@@ -64,8 +64,6 @@ package body Hash is
    
    procedure Print_Hash(Vhash:Hash_Type) is
       C : Color := White;
-      Tmp : Piece;
-      K : Integer;
    begin
       Put_Line(File_Log,"low="&Integer_16'Image(Vhash.Low)&" high="&Integer_16'Image(Vhash.High)&" from="&Unsigned_6'Image(Vhash.From)&" to="&Unsigned_6'Image(Vhash.To)&" valid="&Boolean'Image(Vhash.Valid)&" prof="&Integer_10'Image(Vhash.Prof)&" movenum="&Hash.Unsigned_8'Image(Vhash.Movenum));
       

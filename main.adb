@@ -264,7 +264,7 @@ begin
                   Real_Dur := Ada.Real_Time."-"(Ada.Real_Time.Clock,Full_Start_Time_Real);
                   Put_Line(File_Log,"Raising End_thinking in Interrupted. Dur:"&Float'Image(Dur)
 		          & " Real_Dur:" & Duration'Image(Ada.Real_Time.To_Duration(Real_Dur))	
-			  & " Period:" & Ada.Real_Time.Time_Span'Image(Period)
+--			  & " Period:" & Ada.Real_Time.Time_Span'Image(Period)
                           & " Max_delay:"&Float'Image(Max_Delay));
                   raise End_Thinking;
                then abort

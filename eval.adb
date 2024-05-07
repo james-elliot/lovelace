@@ -65,7 +65,7 @@ package body Eval is
       Castle : Integer :=0;
       To, Danger : Integer;
       Vicinity : Intboard;
-      B:Intboard;
+--      B:Intboard;
    begin
       if Coefb<=0 then Return 0; end if;
       
@@ -254,7 +254,7 @@ package body Eval is
    function Valeur(C:Color;Matw:Integer;Matb:Integer;Cast:Castling;Int_Prof:integer) return Integer is
       Mob : Integer :=0;
       Pos : Integer := 0;
-      Coefb,Coefw,Tmp,Tmp2,Wks,Bks,Wps,Bps : Integer;
+      Coefb,Coefw,Tmp,Wks,Bks,Wps,Bps : Integer;
    begin
 
       if Is_In_Ptable then
